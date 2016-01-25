@@ -16,7 +16,7 @@
 Ex03opengl::Ex03opengl(QWidget* parent)
 	: QGLWidget(parent)
 {
-	mode = 2;
+	mode = 3;
 	init = false;
 	mouse = false;
 	asp = 1;
@@ -93,7 +93,7 @@ void Ex03opengl::initializeGL()
 	//  Load shaders
 	Shader(1, ":/ex03a.vert", ":/ex03a.frag");
 	Shader(2, ":/ex03b.vert", ":/ex03b.frag");
-	Shader(3, ":/ex03b.vert", ":/ex03c.frag");
+	Shader(3, ":/bump.vert", ":/bump.frag");
 
 	ball = new Sphere();
 
@@ -177,10 +177,7 @@ void Ex03opengl::paintGL()
 		shader[mode].setUniformValue("specular", specular);
 		shader[mode].setUniformValue("shininess", 2.0f);
 		shader[mode].setUniformValue("texture", 0);
-		if (mode == 2)
-		{
-			shader[mode].setUniformValue("radius", dotR);
-		}
+		shader[mode].setUniformValue("radius", dotR);
 	}
 
 	if (obj) obj->display(&shader[mode]);

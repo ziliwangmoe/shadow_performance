@@ -4,7 +4,8 @@
     <file>ex03b.vert</file>
     <file>ex03a.frag</file>
     <file>ex03b.frag</file>
-    <file>ex03c.frag</file>
+	<file>bump.vert</file>
+    <file>bump.frag</file>
     <file>suzanne.obj</file>
     <file>suzanne.mtl</file>
     <file>pi.png</file>
