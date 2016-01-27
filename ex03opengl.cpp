@@ -211,7 +211,7 @@ void Ex03opengl::Projection()
 	else{
 		float fov_t = 1 / tan((float)fov / 2 / 180.0*3.1415);
 		float nearPlanH = zn*Tan(fov / 2);
-		projMat_t.frustum(-nearPlanH*asp, nearPlanH*asp, -nearPlanH, nearPlanH, zn, zf);
+		projMat_t.frustum(-nearPlanH*asp*dim / 3, nearPlanH*asp*dim / 3, -nearPlanH*dim / 3, nearPlanH*dim / 3, zn, zf);
 		//projMat_t.perspective(fov, asp, zn, zf);
 
 		//projMat.setRow(0, QVector4D(fov_t*dim/3, 0.0, 0.0, 0.0));
@@ -259,10 +259,10 @@ void Ex03opengl::wheelEvent(QWheelEvent* e)
 {
 	//  Zoom out
 	if (e->delta() < 0)
-		dim += 0.1;
+		dim -= 0.1;
 	//  Zoom in
 	else if (dim > 1)
-		dim -= 0.1;
+		dim += 0.1;
 	//  Request redisplay
 	Projection();
 	updateGL();

@@ -25,13 +25,13 @@ void main()
 	vec3 T = normalize((normalMatrix * vec4(a_tangent.xyz,0.0)).xyz);
 	vec3 B = cross(N,T);
 
-	lightDirT.x = dot(L, T);
-	lightDirT.y = dot(L, B);
+	lightDirT.x = dot(L, B);
+	lightDirT.y = dot(L, T);
 	lightDirT.z = dot(L, N);
 	lightDirT = normalize(lightDirT);
 
-	eyeDirT.x = dot(V, T);
-	eyeDirT.y = dot(V, B);
+	eyeDirT.x = dot(V, B);
+	eyeDirT.y = dot(V, T);
 	eyeDirT.z = dot(V, N);
 	eyeDirT = normalize(eyeDirT);
 

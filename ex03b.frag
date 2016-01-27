@@ -14,22 +14,30 @@ uniform float time;
 uniform float radius;
 varying vec3 testData;
 
+float getMask(float x, float y){
+	vec2 ModelPos = vec2(x, y);
+	//get the position relative to corresponding gird points.
+	vec2 coor = fract(ModelPos);
+	coor = coor - vec2(0.5);
+	//compare coor to gird points(0.5, 0.5)
+	float d = coor.x*coor.x + coor.y*coor.y;
+	// using step function to get ride of branching, maybe I need to compare the efficiency of this two versions later.
+	return step(radius,d);
+}
 
 void main(){
 	// shift every two row by 0.5
-	if(fract((ModelPos.y-0.5)*0.5)>0.5){
+	float filterW = fwidth(ModelPos);
+	//float filterW = 0.02;
+	if(fract((ModelPos.y)*0.5)>0.5){
 		ModelPos.x += 0.5;
 	}
+	
 
-	//get the position relative to corresponding gird points.
-	vec2 coor = fract(ModelPos);
-	//compare coor to gird points(0, 0)
-	float xx = coor.x*coor.x;
-	float yy = coor.y*coor.y;
-	float xxInv = (1-coor.x)*(1-coor.x);
-	float yyInv = (1-coor.y)*(1-coor.y);
-	// using step function to get ride of branching, maybe I need to compare the efficiency of this two versions later.
-	float bitMask = step(radius,xx+yy)*step(radius,xxInv+yyInv)*step(radius,xxInv+yy)*step(radius,xx+yyInv);
+	float bitMask= (getMask(ModelPos.x+filterW, ModelPos.y)+ getMask(ModelPos.x-filterW, ModelPos.y)+ getMask(ModelPos.x, ModelPos.y)+
+	getMask(ModelPos.x+filterW, ModelPos.y+filterW)+ getMask(ModelPos.x-filterW, ModelPos.y+filterW)+ getMask(ModelPos.x, ModelPos.y+filterW)+
+	getMask(ModelPos.x+filterW, ModelPos.y-filterW)+ getMask(ModelPos.x-filterW, ModelPos.y-filterW)+ getMask(ModelPos.x, ModelPos.y-filterW)
+	)/9;
 
 	vec3 color = mix(BrickColor, MortarColor, bitMask);
    color *= LightIntensity;

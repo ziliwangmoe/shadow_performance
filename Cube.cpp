@@ -20,10 +20,10 @@ Cube::Cube() :Object(0, 0, 0), indexBuf(QOpenGLBuffer::IndexBuffer)
 	indexBuf.create();
 	VertexData_Tangent vertices[] = {
 	   // Vertex data for face 0
-		{ QVector3D(-1.0f, -1.0f, 1.0f), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f) },  // v0
-		{ QVector3D(1.0f, -1.0f, 1.0f), QVector2D(0.33f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v1
-		{ QVector3D(-1.0f, 1.0f, 1.0f), QVector2D(0.0f, 0.5f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f) },  // v2
-		{ QVector3D(1.0f, 1.0f, 1.0f), QVector2D(0.33f, 0.5f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v3
+		{ QVector3D(-1.0f, -1.0f, 1.0f), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v0
+		{ QVector3D(1.0f, -1.0f, 1.0f), QVector2D(0.33f, 0.0f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v1
+		{ QVector3D(-1.0f, 1.0f, 1.0f), QVector2D(0.0f, 0.5f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v2
+		{ QVector3D(1.0f, 1.0f, 1.0f), QVector2D(0.33f, 0.5f), QVector3D(0.0f, 0.0f, 1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v3
 
 	   // Vertex data for face 1
 		{ QVector3D(1.0f, -1.0f, 1.0f), QVector2D(0.0f, 0.5f), QVector3D(1.0f, 0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v4
@@ -32,10 +32,10 @@ Cube::Cube() :Object(0, 0, 0), indexBuf(QOpenGLBuffer::IndexBuffer)
 		{ QVector3D(1.0f, 1.0f, -1.0f), QVector2D(0.33f, 1.0f), QVector3D(1.0f, 0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v7
 
 	   // Vertex data for face 2
-		{ QVector3D(1.0f, -1.0f, -1.0f), QVector2D(0.66f, 0.5f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v8
-		{ QVector3D(-1.0f, -1.0f, -1.0f), QVector2D(1.0f, 0.5f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, 1.0f, 0.0f) },  // v9
-		{ QVector3D(1.0f, 1.0f, -1.0f), QVector2D(0.66f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v10
-		{ QVector3D(-1.0f, 1.0f, -1.0f), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, 1.0f, 0.0f) },  // v11
+		{ QVector3D(1.0f, -1.0f, -1.0f), QVector2D(0.66f, 0.5f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v8
+		{ QVector3D(-1.0f, -1.0f, -1.0f), QVector2D(1.0f, 0.5f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v9
+		{ QVector3D(1.0f, 1.0f, -1.0f), QVector2D(0.66f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v10
+		{ QVector3D(-1.0f, 1.0f, -1.0f), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v11
 
 	   // Vertex data for face 3
 		{ QVector3D(-1.0f, -1.0f, -1.0f), QVector2D(0.66f, 0.0f), QVector3D(-1.0f, 0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v12
