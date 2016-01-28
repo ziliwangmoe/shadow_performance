@@ -13,7 +13,7 @@
 Ex03viewer::Ex03viewer()
 {
    //  Set window title
-   setWindowTitle(tr("Ex03:  Procedural Textures"));
+   setWindowTitle(tr("Assignment 2: Zili Wang"));
 
    //  Create new Triangle widget
    ogl = new Ex03opengl;
