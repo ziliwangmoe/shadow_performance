@@ -44,12 +44,12 @@ void main(){
 	vec3 V = eyeDirT;
 	float Id = max(dot(L,N) , 0.0);
 	float Is = (Id>0.0) ? pow(max(dot(R,V) , 0.0) , shininess) : 0.0;
-	vec3 colorDump = Id*diffuse;
-	//vec3 colorDump = ambient + Id*diffuse + Is*specular;
+	//vec3 colorDump = Id*diffuse;
+	vec3 colorDump = ambient + Id*diffuse + Is*specular;
 	float LightIntensity = length(colorDump);
 
-	//vec3 color = colorDot*LightIntensity;
-	vec3 color = LightIntensity;
+	vec3 color = colorDot*LightIntensity;
+	//vec3 color = LightIntensity;
 
 	gl_FragColor = vec4(color,1.0);
 	//gl_FragColor = vec4(testData,1.0);

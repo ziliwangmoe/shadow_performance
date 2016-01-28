@@ -14,6 +14,7 @@ private:
    QDoubleSpinBox* Ypos;
    QSlider*        Zpos;
    QPushButton*    light;
+   QCheckBox*      antiAlias;
    Ex03opengl*     ogl;
 private slots:
    void reset();        //  Reset angles

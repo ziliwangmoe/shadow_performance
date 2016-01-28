@@ -35,7 +35,7 @@ void main()
 	eyeDirT.z = dot(V, N);
 	eyeDirT = normalize(eyeDirT);
 
-	ModelPos = loc.z*a_position.xy*2 - loc.xy;
+	ModelPos = loc.z*a_position.xy*4 - loc.xy;
 	gl_Position = mvpMatrix * a_position;
 	//testData = normalize((normalMatrix * vec4(a_normal.xyz,0.0)).xyz);
 }

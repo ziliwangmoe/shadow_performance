@@ -20,7 +20,7 @@ Ex03viewer::Ex03viewer()
 
    //  Select shader
    QComboBox* shader = new QComboBox();
-   shader->addItem("None");
+   shader->addItem("Noise");
    shader->addItem("White");
    shader->addItem("Dot");
    shader->addItem("Bump");
@@ -51,6 +51,10 @@ Ex03viewer::Ex03viewer()
    //  Pause/resume button
    light = new QPushButton("Pause");
 
+   antiAlias = new QCheckBox("Use Antialias");
+   antiAlias->setChecked(true);
+
+
    //  Reset
    QPushButton* rst = new QPushButton("Reset");
    //  Quit
@@ -77,12 +81,14 @@ Ex03viewer::Ex03viewer()
    layout->addWidget(zoom,7,2);
    layout->addWidget(new QLabel("Light"),8,1);
    layout->addWidget(light,8,2);
-   layout->addWidget(rst,10,1);
-   layout->addWidget(quit,10,2);
+   //layout->addWidget(new QLabel("Light"), 9, 1);
+   layout->addWidget(antiAlias, 9, 2);
+   layout->addWidget(rst,11,1);
+   layout->addWidget(quit,11,2);
    //  Manage resizing
    layout->setColumnStretch(0,100);
    layout->setColumnMinimumWidth(0,100);
-   layout->setRowStretch(9,100);
+   layout->setRowStretch(10,100);
    setLayout(layout);
 
    //  Connect valueChanged() signals to ogl
@@ -101,6 +107,8 @@ Ex03viewer::Ex03viewer()
    connect(light,SIGNAL(pressed()),this,SLOT(lmove()));
    //  Connect quit() signal to qApp::quit()
    connect(quit,SIGNAL(pressed()) , qApp,SLOT(quit()));
+
+   connect(antiAlias, SIGNAL(stateChanged(int)), ogl, SLOT(setAntiAlias(int)));
 }
 
 //

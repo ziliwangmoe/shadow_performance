@@ -6,6 +6,8 @@
     <file>ex03b.frag</file>
 	<file>bump.vert</file>
     <file>bump.frag</file>
+	<file>noise.vert</file>
+    <file>noise.frag</file>
     <file>suzanne.obj</file>
     <file>suzanne.mtl</file>
     <file>pi.png</file>

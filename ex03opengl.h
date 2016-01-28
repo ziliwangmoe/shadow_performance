@@ -24,6 +24,7 @@ private:
    int     th,ph;     //  Display angles
    float   fixZ;
    bool    mouse;     //  Mouse pressed
+   int    isAntiAlias;
    QPoint  pos;       //  Mouse position
    int     fov;       //  Field of view
    double  dim;       //  Display size
@@ -44,6 +45,7 @@ public slots:
     void setShader(int sel);               //  Slot to set shader
     void setPerspective(int on);           //  Slot to set projection type
     void setObject(int type);              //  Slot to set displayed object
+	void setAntiAlias(int isAnti);
     void setX(double X);                   //  Slot to set X position
     void setY(double Y);                   //  Slot to set Y position
     void setZoom(double Z);                //  Slot to set Zoom level

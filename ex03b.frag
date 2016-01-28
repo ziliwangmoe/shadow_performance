@@ -14,6 +14,8 @@ uniform float time;
 uniform float radius;
 varying vec3 testData;
 
+uniform int isAntiAlias;
+
 float getMask(float x, float y){
 	vec2 ModelPos = vec2(x, y);
 	//get the position relative to corresponding gird points.
@@ -27,7 +29,10 @@ float getMask(float x, float y){
 
 void main(){
 	// shift every two row by 0.5
-	float filterW = fwidth(ModelPos);
+	float filterW = fwidth(ModelPos)*0.5;
+	if(isAntiAlias==0){
+		filterW = 0;
+	}
 	//float filterW = 0.02;
 	if(fract((ModelPos.y)*0.5)>0.5){
 		ModelPos.x += 0.5;

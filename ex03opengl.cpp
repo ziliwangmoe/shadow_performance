@@ -16,17 +16,18 @@
 Ex03opengl::Ex03opengl(QWidget* parent)
 	: QGLWidget(parent)
 {
-	mode = 3;
+	mode = 0;
 	init = false;
 	mouse = false;
 	asp = 1;
 	dim = 3;
-	fov = 55;
+	fov = 0;
 	th = ph = 0;
 	x0 = y0 = 0;
 	z0 = 1;
 	zh = 0;
 	fixZ = 6;
+	isAntiAlias = 1;
 }
 void Ex03opengl::reset()
 {
@@ -78,6 +79,11 @@ void Ex03opengl::setObject(int type)
 	//  Request redisplay
 	updateGL();
 }
+void Ex03opengl::setAntiAlias(int _isAnti)
+{
+	isAntiAlias = _isAnti;
+}
+
 void Ex03opengl::initializeGL()
 {
 	if (init) return;
@@ -91,9 +97,11 @@ void Ex03opengl::initializeGL()
 
 
 	//  Load shaders
+	Shader(0, ":/noise.vert", ":/noise.frag");
 	Shader(1, ":/ex03a.vert", ":/ex03a.frag");
 	Shader(2, ":/ex03b.vert", ":/ex03b.frag");
 	Shader(3, ":/bump.vert", ":/bump.frag");
+
 
 	ball = new Sphere();
 
@@ -160,25 +168,23 @@ void Ex03opengl::paintGL()
 	float dotR = 0.16;
 	//  Apply shader
 	texture->bind();
-	if (mode)
-	{
-		shader[mode].bind();
-		//  Dimensions
-		QVector3D loc(x0, y0, 1 / z0);
-		shader[mode].setUniformValue("loc", loc);
-		shader[mode].setUniformValue("time", t);
-		QMatrix4x4 tmep = projMat * viewMat;
-		shader[mode].setUniformValue("mvpMatrix", projMat * viewMat);
-		shader[mode].setUniformValue("mvMatrix", viewMat);
-		shader[mode].setUniformValue("normalMatrix", viewMat);
-		shader[mode].setUniformValue("lightPos", viewMat*lightPosition);
-		shader[mode].setUniformValue("ambient", ambient);
-		shader[mode].setUniformValue("diffuse", diffuse);
-		shader[mode].setUniformValue("specular", specular);
-		shader[mode].setUniformValue("shininess", 2.0f);
-		shader[mode].setUniformValue("texture", 0);
-		shader[mode].setUniformValue("radius", dotR);
-	}
+	shader[mode].bind();
+	//  Dimensions
+	QVector3D loc(x0, y0, 1 / z0);
+	shader[mode].setUniformValue("loc", loc);
+	shader[mode].setUniformValue("time", t);
+	QMatrix4x4 tmep = projMat * viewMat;
+	shader[mode].setUniformValue("mvpMatrix", projMat * viewMat);
+	shader[mode].setUniformValue("mvMatrix", viewMat);
+	shader[mode].setUniformValue("normalMatrix", viewMat);
+	shader[mode].setUniformValue("lightPos", viewMat*lightPosition);
+	shader[mode].setUniformValue("ambient", ambient);
+	shader[mode].setUniformValue("diffuse", diffuse);
+	shader[mode].setUniformValue("specular", specular);
+	shader[mode].setUniformValue("shininess", 2.0f);
+	shader[mode].setUniformValue("texture", 0);
+	shader[mode].setUniformValue("radius", dotR);
+	shader[mode].setUniformValue("isAntiAlias", isAntiAlias);
 
 	if (obj) obj->display(&shader[mode]);
 
@@ -199,7 +205,7 @@ void Ex03opengl::Projection()
 {
 	QMatrix4x4 projMat_t;
 	float zn = dim / 4;
-	float zf = dim * 4;
+	float zf = dim * 8;
 
 	if (fov == 0){
 		projMat_t.ortho(-dim*asp, dim*asp, -dim, dim, zn, zf);
