@@ -73,20 +73,17 @@ viewer::viewer()
 	layout->addWidget(Xpos, 3, 2);
 	layout->addWidget(new QLabel("Y Area"), 4, 1);
 	layout->addWidget(Ypos, 4, 2);
-	layout->addWidget(new QLabel("Loops"), 5, 1);
+	layout->addWidget(new QLabel("Iter Count"), 5, 1);
 	layout->addWidget(Zpos, 5, 2);
 	layout->addWidget(new QLabel("Angles"), 6, 1);
 	layout->addWidget(angles, 6, 2);
 	layout->addWidget(new QLabel("FPS"), 7, 1);
 	layout->addWidget(fps_Lable, 7, 2);
-	layout->addWidget(new QLabel("Info1"), 8, 1);
-	layout->addWidget(fps_Lable, 8, 2);
-	layout->addWidget(new QLabel("Info2"), 9, 1);
-	layout->addWidget(fps_Lable, 9, 2);
+	layout->addWidget(new QLabel("Delta Time"), 8, 1);
+	layout->addWidget(info1, 8, 2);
 	layout->addWidget(new QLabel("Light"), 10, 1);
 	layout->addWidget(light, 10, 2);
 	//layout->addWidget(new QLabel("Light"), 9, 1);
-	layout->addWidget(antiAlias, 11, 2);
 	layout->addWidget(rst, 13, 1);
 	layout->addWidget(quit, 13, 2);
 	//  Manage resizing
@@ -103,7 +100,7 @@ viewer::viewer()
 	connect(Zpos, SIGNAL(valueChanged(int)), ogl, SLOT(setZoom(int)));
 	connect(ogl, SIGNAL(angles(QString)), angles, SLOT(setText(QString)));
 	connect(ogl, SIGNAL(fps(QString)), fps_Lable, SLOT(setText(QString)));
-	connect(ogl, SIGNAL(info1(QString)), fps_Lable, SLOT(setText(QString)));
+	connect(ogl, SIGNAL(info1(QString)), info1, SLOT(setText(QString)));
 	connect(ogl, SIGNAL(info2(QString)), fps_Lable, SLOT(setText(QString)));
 	connect(rst, SIGNAL(pressed()), this, SLOT(reset()));
 	connect(light, SIGNAL(pressed()), this, SLOT(lmove()));

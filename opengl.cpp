@@ -17,7 +17,7 @@
 opengl::opengl(QWidget* parent)
 	: QGLWidget(parent)
 {
-	mode = 2;
+	mode = 0;
 	init = false;
 	mouse = false;
 	asp = 1;
@@ -249,6 +249,8 @@ void opengl::paintGL()
 		time_recorded = t_cur;
 		m_fps = floor(CLOCKS_PER_SEC / (float)t_delta*30);
 		emit fps(QString::number(m_fps));
+		float deltaTime = 1.0/m_fps*1000;
+		emit info1(QString::number(deltaTime));
 	}
 	fps_counter++;
 	
