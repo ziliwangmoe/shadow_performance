@@ -135,14 +135,6 @@ void WaveOBJ::SetMaterial(const QString& name)
 
 WaveOBJ::WaveOBJ(const char* file, const QString& path)
 {
-	//  Initialize location
-	translate(0, 0, 0);
-	rotate(0, 1, 0, 0);
-	scale(1);
-	//  Initialize color and scale
-	R = G = B = s = 1;
-
-	//  Open file
 	QFile f(path + file);
 	if (!f.open(QFile::ReadOnly | QFile::Text)) throw QString("Cannot open file ") + file;
 	QTextStream in(&f);

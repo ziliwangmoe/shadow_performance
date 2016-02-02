@@ -5,7 +5,7 @@
 //
 
 #include <QApplication>
-#include "ex03viewer.h"
+#include "viewer.h"
 
 //
 //  Main function
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
    //  Create the application
    QApplication app(argc,argv);
    //  Create and show view widget
-   Ex03viewer view;
+   viewer view;
    view.show();
    //  Main loop for application
    return app.exec();

@@ -14,7 +14,7 @@ struct VertexData_Tangent
 };
 
 
-Cube::Cube() :Object(0, 0, 0), indexBuf(QOpenGLBuffer::IndexBuffer)
+Cube::Cube() : indexBuf(QOpenGLBuffer::IndexBuffer)
 {
 	arrayBuf.create();
 	indexBuf.create();
@@ -32,10 +32,10 @@ Cube::Cube() :Object(0, 0, 0), indexBuf(QOpenGLBuffer::IndexBuffer)
 		{ QVector3D(1.0f, 1.0f, -1.0f), QVector2D(0.33f, 1.0f), QVector3D(1.0f, 0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v7
 
 	   // Vertex data for face 2
-		{ QVector3D(1.0f, -1.0f, -1.0f), QVector2D(0.66f, 0.5f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v8
-		{ QVector3D(-1.0f, -1.0f, -1.0f), QVector2D(1.0f, 0.5f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v9
-		{ QVector3D(1.0f, 1.0f, -1.0f), QVector2D(0.66f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v10
-		{ QVector3D(-1.0f, 1.0f, -1.0f), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v11
+		{ QVector3D(1.0f, -1.0f, -1.0f), QVector2D(1.0f, 0.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v8
+		{ QVector3D(-1.0f, -1.0f, -1.0f), QVector2D(0.0f, 0.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v9
+		{ QVector3D(1.0f, 1.0f, -1.0f), QVector2D(1.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) }, // v10
+		{ QVector3D(-1.0f, 1.0f, -1.0f), QVector2D(0.0f, 1.0f), QVector3D(0.0f, 0.0f, -1.0f), QVector3D(0.0f, -1.0f, 0.0f) },  // v11
 
 	   // Vertex data for face 3
 		{ QVector3D(-1.0f, -1.0f, -1.0f), QVector2D(0.66f, 0.0f), QVector3D(-1.0f, 0.0f, 0.0f), QVector3D(0.0f, 1.0f, 0.0f) }, // v12
@@ -76,25 +76,6 @@ Cube::Cube() :Object(0, 0, 0), indexBuf(QOpenGLBuffer::IndexBuffer)
 	
 }
 
-//
-//  Set rotation
-//
-void Cube::rotate(float th)
-{
-
-}
-
-//
-//  Set scaling
-//
-void Cube::scale(float dx,float dy,float dz)
-{
-
-}
-
-//
-//  Display the cube
-//
 void Cube::display(QOpenGLShaderProgram *program)
 {
 	// Tell OpenGL which VBOs to use

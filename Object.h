@@ -24,23 +24,16 @@ struct VertexData
 
 class Object
 {
+public:
+	QVector3D trans = QVector3D(0.0, 0.0,0.0);
+	QVector3D scale = QVector3D(1.0, 1.0, 1.0);
+public:
+	QMatrix4x4 modelMat; 
+	virtual void display(QOpenGLShaderProgram *program) = 0; 
+	virtual ~Object() {}; 
+	void applyToMat();
 protected:
 	
-	unsigned int tex;                        //  Default texture
-	Object(float x = 0, float y = 0, float z = 0);   //  Constructor
-	float x0, y0, z0;
-	float scale=1.0;
-public:
-	QMatrix4x4 modelMat;
-	void translate(float x, float y, float z); //  Set translation
-	void texture(QString file);              //  Set default texture
-	virtual void display(QOpenGLShaderProgram *program) = 0;                //  Render the object
-	virtual ~Object() {};                    //  Do nothing destructor
-protected:
-	void setColor(Color c);
-	void setColor(Color a, Color d, Color s, Color e, float Ns);
-	void EnableTex();
-	void DisableTex();
 };
 
 #endif

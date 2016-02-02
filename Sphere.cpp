@@ -37,13 +37,9 @@ static QVector3D getTangent(double th_ori, double ph_ori, double th_end, double 
 	return tangent;
 }
 
-Sphere::Sphere(float x, float y, float z,float Rc, float Gc, float Bc) :
-Object(x, y, z)
+Sphere::Sphere(float x, float y, float z,float Rc, float Gc, float Bc)
 {
-	R = Rc;
-	G = Gc;
-	B = Bc;
-	scale = 0.3;
+	scale = QVector3D(0.3, 0.3, 0.3);
 	arrayBuf.create();
 	vector<VertexData_Tangent> vList;
 	const int inc = 10;

@@ -1,0 +1,15 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>white.vert</file>
+    <file>depth.vert</file>
+    <file>white.frag</file>
+    <file>depth.frag</file>
+	<file>shadow.vert</file>
+    <file>shadow.frag</file>
+	<file>performance.vert</file>
+    <file>performance.frag</file>
+    <file>suzanne.obj</file>
+    <file>suzanne.mtl</file>
+    <file>pi.png</file>
+</qresource>
+</RCC>
